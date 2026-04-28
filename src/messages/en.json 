@@ -1,0 +1,17 @@
+{
+  "Home": {
+    "title": "Welcome to Lite Agent",
+    "description": "A lightweight international site with script support.",
+    "cta": "Run demo script",
+    "featureTitle": "Core Features"
+  },
+  "Nav": {
+    "home": "Home",
+    "about": "About",
+    "demo": "Demo"
+  },
+  "Demo": {
+    "scriptLoaded": "External script loaded!",
+    "dynamicContent": "Dynamic content added by lite-agent.js"
+  }
+}

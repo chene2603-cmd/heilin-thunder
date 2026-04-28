@@ -1,0 +1,127 @@
+'use client';
+
+import { useTranslations } from 'next-intl';
+import { siteData } from '@/lib/content';
+import DemoCard from '@/components/DemoCard';
+
+export default function Home() {
+  const t = useTranslations('Home');
+  const dt = useTranslations('Demo');
+  const currentLang = useTranslations().locale as 'en' | 'zh';
+
+  const runTimeAlert = () => {
+    const now = new Date();
+    const timeStr = now.toLocaleTimeString();
+    const dateStr = now.toLocaleDateString();
+    
+    alert(`${t('cta')}\n\n${dateStr} ${timeStr}`);
+  };
+
+  const changeBackground = () => {
+    const colors = ['#f0f9ff', '#fef2f2', '#f0fdf4', '#fff7ed'];
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    document.body.style.backgroundColor = randomColor;
+    
+    setTimeout(() => {
+      document.body.style.backgroundColor = '';
+    }, 2000);
+  };
+
+  return (
+    <div className="max-w-6xl mx-auto">
+      {/* Hero Section */}
+      <div className="text-center py-12">
+        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          {t('title')}
+        </h1>
+        <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+          {t('description')}
+        </p>
+        
+        <div className="flex flex-wrap justify-center gap-4 mb-12">
+          <button
+            onClick={runTimeAlert}
+            className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium"
+          >
+            {t('cta')}
+          </button>
+          
+          <button
+            onClick={changeBackground}
+            className="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition font-medium"
+          >
+            {currentLang === 'en' ? 'Change Theme' : '切换主题'}
+          </button>
+        </div>
+      </div>
+
+      {/* Features Grid */}
+      <div className="mb-12">
+        <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+          {t('featureTitle')}
+        </h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {siteData.features.map((feature) => (
+            <div
+              key={feature.id}
+              className="bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition"
+            >
+              <div className="text-3xl mb-4">{feature.icon}</div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                {feature.title[currentLang]}
+              </h3>
+              <p className="text-gray-600">
+                {feature.desc[currentLang]}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Demo Scripts Section */}
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-8">
+        <h2 className="text-2xl font-bold text-gray-900 mb-6">
+          {currentLang === 'en' ? 'Built-in Demo Scripts' : '内置演示脚本'}
+        </h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {siteData.demoScripts.map((script) => (
+            <DemoCard
+              key={script.id}
+              id={script.id}
+              name={script.name[currentLang]}
+              description={script.description[currentLang]}
+              currentLang={currentLang}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* External Script Info */}
+      <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
+        <h3 className="text-lg font-semibold text-blue-900 mb-3">
+          {currentLang === 'en' ? 'External Script Support' : '外部脚本支持'}
+        </h3>
+        <p className="text-blue-800 mb-4">
+          {currentLang === 'en' 
+            ? 'This template supports loading external JavaScript files. Check the browser console for script output.' 
+            : '此模板支持加载外部 JavaScript 文件。请查看浏览器控制台的脚本输出。'}
+        </p>
+        <div className="text-sm text-blue-700" id="dynamic-content">
+          {/* Will be populated by public/lite-agent.js */}
+        </div>
+      </div>
+
+      {/* Footer Info */}
+      <div className="mt-12 pt-8 border-t border-gray-200 text-center text-gray-600 text-sm">
+        <p>{siteData.footer.copyright[currentLang]}</p>
+        <p className="mt-2">{siteData.footer.notice[currentLang]}</p>
+      </div>
+
+      {/* Include external scripts */}
+      <script src="/script.js" defer />
+      <script src="/lite-agent.js" defer />
+    </div>
+  );
+}

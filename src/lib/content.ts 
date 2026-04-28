@@ -1,0 +1,79 @@
+// 集中管理所有可复用的多语言内容
+export const siteData = {
+  features: [
+    { 
+      id: 1, 
+      title: { en: "Fast & Light", zh: "快速轻量" }, 
+      desc: { 
+        en: "Zero build time, instant loading", 
+        zh: "零构建时间，即时加载" 
+      },
+      icon: "⚡"
+    },
+    { 
+      id: 2, 
+      title: { en: "Multi-language", zh: "多语言支持" }, 
+      desc: { 
+        en: "Built-in i18n routing", 
+        zh: "内置国际化路由" 
+      },
+      icon: "🌍"
+    },
+    { 
+      id: 3, 
+      title: { en: "Script Ready", zh: "脚本就绪" }, 
+      desc: { 
+        en: "Frontend JS execution support", 
+        zh: "支持前端脚本执行" 
+      },
+      icon: "🚀"
+    },
+    { 
+      id: 4, 
+      title: { en: "Free Hosting", zh: "免费托管" }, 
+      desc: { 
+        en: "Deploy on Vercel for free", 
+        zh: "可在 Vercel 免费部署" 
+      },
+      icon: "💰"
+    }
+  ],
+  
+  demoScripts: [
+    { 
+      id: 1, 
+      name: { en: "Time Display", zh: "时间显示" }, 
+      description: { 
+        en: "Show current time with alert", 
+        zh: "用弹窗显示当前时间" 
+      }
+    },
+    { 
+      id: 2, 
+      name: { en: "Color Changer", zh: "颜色切换" }, 
+      description: { 
+        en: "Change page background color", 
+        zh: "切换页面背景颜色" 
+      }
+    },
+    { 
+      id: 3, 
+      name: { en: "Counter", zh: "计数器" }, 
+      description: { 
+        en: "Simple increment counter", 
+        zh: "简单的递增计数器" 
+      }
+    }
+  ],
+  
+  footer: {
+    copyright: { 
+      en: "© 2026 Lite Agent. All demos are client-side only.", 
+      zh: "© 2026 Lite Agent。所有演示均为纯客户端运行。" 
+    },
+    notice: { 
+      en: "No data is sent to servers. Everything runs locally.", 
+      zh: "无数据发送到服务器。所有操作均在本地运行。" 
+    }
+  }
+};

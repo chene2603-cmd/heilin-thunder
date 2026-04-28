@@ -1,0 +1,17 @@
+{
+  "Home": {
+    "title": "欢迎使用 Lite Agent",
+    "description": "支持脚本的轻量级国际化网站。",
+    "cta": "运行演示脚本",
+    "featureTitle": "核心特性"
+  },
+  "Nav": {
+    "home": "首页",
+    "about": "关于",
+    "demo": "演示"
+  },
+  "Demo": {
+    "scriptLoaded": "外部脚本已加载！",
+    "dynamicContent": "由 lite-agent.js 添加的动态内容"
+  }
+}

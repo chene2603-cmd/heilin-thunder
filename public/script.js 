@@ -1,0 +1,36 @@
+// 基础演示脚本
+console.log('✅ External script loaded successfully!');
+
+// 页面加载完成后执行
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('📄 Page loaded, running external script...');
+  
+  // 添加动态内容
+  const demoDiv = document.createElement('div');
+  demoDiv.className = 'external-script-notice';
+  demoDiv.innerHTML = `
+    <div style="
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin-top: 1rem;
+      text-align: center;
+      font-weight: 500;
+    ">
+      🎉 External script.js is working!
+    </div>
+  `;
+  
+  const container = document.querySelector('#dynamic-content');
+  if (container) {
+    container.appendChild(demoDiv);
+  }
+  
+  // 添加点击监听器
+  document.addEventListener('click', function(e) {
+    if (e.target.tagName === 'BUTTON') {
+      console.log('🖱️ Button clicked:', e.target.textContent);
+    }
+  });
+});

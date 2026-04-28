@@ -1,0 +1,42 @@
+'use client';
+
+interface DemoCardProps {
+  id: number;
+  name: string;
+  description: string;
+  currentLang: 'en' | 'zh';
+}
+
+export default function DemoCard({ id, name, description, currentLang }: DemoCardProps) {
+  const runDemo = (demoId: number) => {
+    switch (demoId) {
+      case 1:
+        alert(`${currentLang === 'en' ? 'Current time:' : '当前时间：'} ${new Date().toLocaleTimeString()}`);
+        break;
+      case 2:
+        document.body.style.backgroundColor = 
+          document.body.style.backgroundColor === 'rgb(254 226 226)' 
+            ? '' 
+            : '#fee2e2';
+        break;
+      case 3:
+        const count = parseInt(localStorage.getItem('demoCounter') || '0') + 1;
+        localStorage.setItem('demoCounter', count.toString());
+        alert(`${currentLang === 'en' ? 'Counter:' : '计数器：'} ${count}`);
+        break;
+    }
+  };
+
+  return (
+    <div className="border border-gray-300 rounded-lg p-5 hover:border-blue-400 transition">
+      <h3 className="font-semibold text-gray-900 text-lg mb-2">{name}</h3>
+      <p className="text-gray-600 text-sm mb-4">{description}</p>
+      <button
+        onClick={() => runDemo(id)}
+        className="w-full py-2 bg-gray-100 hover:bg-gray-200 text-gray-800 rounded transition text-sm font-medium"
+      >
+        {currentLang === 'en' ? 'Run Script' : '运行脚本'}
+      </button>
+    </div>
+  );
+}

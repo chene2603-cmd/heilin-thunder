@@ -1,7 +1,6 @@
 'use client';
 import { useState } from 'react';
 
-// 🧬 DNA四维分析引擎（已修复·可直接运行）
 class DNAAnalyzer {
   名称;
   版本;
@@ -100,7 +99,6 @@ class DNAAnalyzer {
   _md5(s) {return Array.from(s).reduce((a,b)=>((a<<5)-a+b.charCodeAt(0))|0,0).toString(16).padStart(8,"0");}
 }
 
-// 🔐 密码：198051
 export default function DNAAnalyzerPage() {
   const [pwd, setPwd] = useState("");
   const [authorized, setAuthorized] = useState(false);

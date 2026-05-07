@@ -1,0 +1,15 @@
+"scripts": {
+  "dev": "next dev",
+  "build": "next build",
+  "start": "next start",
+  "lint": "next lint",
+  "type-check": "tsc --noEmit",
+  "prebuild": "npm run lint && npm run type-check",
+  "postbuild": "node scripts/generate-sitemap.mjs",
+  "release": "npm run build && vercel --prod",
+  "postinstall": "patch-package"
+},
+"devDependencies": {
+  "@sentry/nextjs": "^8",
+  "patch-package": "^8"
+}

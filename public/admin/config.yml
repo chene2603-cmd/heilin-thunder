@@ -1,0 +1,27 @@
+backend:
+  name: github
+  repo: 你的GitHub用户名/你的仓库名   # ← 改成你自己的
+  branch: main
+  base_url: https://你的域名          # 生产环境用，本地开发可删
+  auth_endpoint: /api/auth
+
+media_folder: 'public/images'
+public_folder: '/images'
+
+collections:
+  - name: 'content'
+    label: '网站内容'
+    files:
+      - label: '首页文案 (中文)'
+        name: 'zh-home'
+        file: 'src/messages/zh.json'
+        fields:
+          - { label: '标题', name: 'title', widget: 'string' }
+          - { label: '描述', name: 'description', widget: 'text' }
+          # 按你的 JSON 结构继续添加字段
+      - label: '首页文案 (英文)'
+        name: 'en-home'
+        file: 'src/messages/en.json'
+        fields:
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Description', name: 'description', widget: 'text' }

@@ -1,29 +1,30 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
-
-const inter = Inter({ subsets: ["latin"] });
+import { use } from 'react';
+import type { Metadata } from 'next';
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
+import './globals.css';
 
 export const metadata: Metadata = {
-  title: "Lite Agent - Scriptable International Site",
-  description: "A lightweight template for script-driven international websites",
+  title: 'Lite Agent',
+  description: 'A lightweight i18n website template',
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
-  params: { locale }
+  params,
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  const messages = await getMessages();
+  // 用 React 的 use() 把 Promise 解出来
+  const { locale } = use(params);
+  // 加载对应语言的消息
+  const messages = use(getMessages({ locale }));
 
   return (
     <html lang={locale}>
-      <body className={`${inter.className} bg-gray-50 text-gray-900`}>
-        <NextIntlClientProvider messages={messages}>
+      <body>
+        <NextIntlClientProvider messages={messages} locale={locale}>
           {children}
         </NextIntlClientProvider>
       </body>
